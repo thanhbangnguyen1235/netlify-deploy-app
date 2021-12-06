@@ -4,7 +4,7 @@ import { Watchedes } from "../models/Watched.js";
 export const getWatched = async (req, res) => {
   try {
     const films = await Watchedes.find({ username: req.query.id })
-      .populate('infoFilm', '-cast')
+      .populate('infoFilm', '-cast -keywords -crew -overview -backdrop_path -popularity -release_date -video -vote_count -revenue -video_id -tagline -run_time -budget -category -adult -original_language -original_title')
     if (films.length > 0) {
       res.json({
         films: films
